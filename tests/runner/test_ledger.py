@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
-from pathlib import Path
-
-import pytest
+from typing import TYPE_CHECKING
 
 from a2a.runner.ledger import Ledger
 from a2a.runner.models import DyadRecord, FunnelStep
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def _make_dyad(dyad_id: str = "abc12345", outcome: str = "buy") -> DyadRecord:

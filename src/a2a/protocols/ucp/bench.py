@@ -12,8 +12,8 @@ from typing import Any
 from a2a.protocols.ucp.models import (
     UCPNativeCheckoutRequest,
     UCPNativeCheckoutResponse,
-    UCPProduct,
     UCPPricingSpec,
+    UCPProduct,
     UCPSearchQuery,
     UCPSearchResponse,
 )
@@ -22,7 +22,7 @@ from a2a.protocols.ucp.models import (
 class MockUCPMerchantFeed:
     """Minimal UCP merchant feed stub."""
 
-    PRODUCTS = [
+    PRODUCTS: list[UCPProduct] = [  # type: ignore[assignment]
         UCPProduct(
             id="observeops-pro",
             name="ObserveOps Pro",
@@ -89,7 +89,6 @@ def run(output_path: Path | None = None) -> dict[str, Any]:
     # 2. Agent inspects JSON-LD for best match
     best = search_resp.products[0] if search_resp.products else None
     if best:
-        json_ld = best.to_json_ld()
         steps.append(f"JSON-LD parsed → {best.name}, {len(best.features)} features")
 
     # 3. Agent initiates Native Checkout

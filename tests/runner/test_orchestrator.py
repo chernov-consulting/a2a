@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
+from typing import TYPE_CHECKING
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -13,6 +13,9 @@ from a2a.llm import LLMRecord
 from a2a.runner.models import ExperimentConfig
 from a2a.runner.orchestrator import Orchestrator
 from a2a.seller.models import FunnelVariant
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def _mock_record(response: str = '{"outcome": "buy", "key_factors": ["price"]}') -> LLMRecord:

@@ -28,9 +28,7 @@ class AP2Mandate(BaseModel):
             return False
         if amount_usd > self.max_transaction_usd:
             return False
-        if datetime.utcnow() > self.expires_at:
-            return False
-        return True
+        return not datetime.utcnow() > self.expires_at
 
 
 class AP2MandateChallenge(BaseModel):

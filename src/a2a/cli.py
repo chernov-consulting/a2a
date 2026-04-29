@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Optional
+from typing import TYPE_CHECKING
 
 import typer
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 app = typer.Typer(name="a2a", add_completion=False, help="Agent-to-agent commerce simulator.")
 
@@ -45,7 +47,7 @@ def report(
 @app.command()
 def bench(
     protocol: str = typer.Argument(help="Protocol to benchmark: ap2 | mcp | a2a | x402 | ucp"),
-    output: Optional[Path] = typer.Option(None, help="Write ledger record to this JSONL file"),
+    output: Path | None = typer.Option(None, help="Write ledger record to this JSONL file"),
 ) -> None:
     """Run a single-transaction benchmark for a payment protocol."""
     import importlib

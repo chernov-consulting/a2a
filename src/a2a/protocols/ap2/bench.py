@@ -7,8 +7,7 @@ import json
 import time
 import uuid
 from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from a2a.protocols.ap2.models import (
     AP2AuthorizationToken,
@@ -18,6 +17,9 @@ from a2a.protocols.ap2.models import (
     AP2PurchaseConfirmation,
     AP2PurchaseRequest,
 )
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def _sign(payload: str, key: str = "mock-private-key") -> str:
@@ -52,7 +54,7 @@ def run(output_path: Path | None = None) -> dict[str, Any]:
     challenge = AP2MandateChallenge(nonce=str(uuid.uuid4()))
 
     # 3. Agent responds to challenge
-    challenge_response = AP2ChallengeResponse(
+    AP2ChallengeResponse(
         nonce=challenge.nonce,
         agent_id=agent_id,
         signed_nonce=_sign(challenge.nonce, key=agent_id),

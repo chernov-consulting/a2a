@@ -6,8 +6,7 @@ import json
 import time
 import uuid
 from datetime import datetime
-from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from a2a.protocols.a2a_proto.models import (
     A2AAgentCard,
@@ -16,6 +15,9 @@ from a2a.protocols.a2a_proto.models import (
     A2ATask,
     A2ATaskUpdate,
 )
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 class MockA2ASellerAgent:

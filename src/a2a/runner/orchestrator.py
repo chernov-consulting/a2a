@@ -6,7 +6,7 @@ import random
 import time
 import uuid
 from datetime import datetime
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import structlog
 import yaml
@@ -17,15 +17,13 @@ from a2a.buyer.agent import BuyingAgent
 from a2a.buyer.models import (
     BuyerArchetype,
     MandateContext,
-    Mandate,
     feature_matcher_mandate,
     price_optimiser_mandate,
     risk_averse_mandate,
 )
-from a2a.catalog.fetcher import CatalogFetcher, physical_good_catalog, saas_subscription_catalog
-from a2a.catalog.models import CatalogEntry
+from a2a.catalog.fetcher import physical_good_catalog, saas_subscription_catalog
 from a2a.config import AppConfig, get_config
-from a2a.llm import LLMClient, get_client
+from a2a.llm import get_client
 from a2a.runner.judge import JudgeLLM
 from a2a.runner.ledger import Ledger
 from a2a.runner.models import (
@@ -36,6 +34,11 @@ from a2a.runner.models import (
 )
 from a2a.seller.agent import SellingAgent
 from a2a.seller.models import FunnelVariant, SellerConfig
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+    from a2a.catalog.models import CatalogEntry
 
 log = structlog.get_logger(__name__)
 console = Console()
@@ -69,7 +72,7 @@ class Orchestrator:
         self._judge = JudgeLLM(self._llm, model=config.judge_model)
 
     @classmethod
-    def from_config_file(cls, config_path: Path, app_config: AppConfig | None = None) -> "Orchestrator":
+    def from_config_file(cls, config_path: Path, app_config: AppConfig | None = None) -> Orchestrator:
         with config_path.open(encoding="utf-8") as f:
             data = yaml.safe_load(f)
         exp_config = ExperimentConfig(**data)

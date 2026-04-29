@@ -7,10 +7,12 @@ import json
 import time
 import uuid
 from datetime import datetime
-from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from a2a.protocols.x402.models import X402PaymentProof, X402PaymentRequirement, X402Response
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def _mock_tx_hash(payer: str, recipient: str, amount: str) -> str:

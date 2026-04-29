@@ -8,12 +8,14 @@ from __future__ import annotations
 
 import json
 from collections import Counter
-from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import structlog
 
 from a2a.exceptions import ReportError
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 log = structlog.get_logger(__name__)
 
@@ -102,7 +104,7 @@ class ReportGenerator:
         })
 
         # Sample dyad traces (first 5)
-        sample_dyads = records[:5]
+        records[:5]
         dyad_rows = "".join(
             f"""<tr class="{'bg-green-950' if d.get('outcome') == 'buy' else 'bg-neutral-900'}">
   <td class="px-3 py-2 font-mono text-xs">{d.get('dyad_id','')}</td>

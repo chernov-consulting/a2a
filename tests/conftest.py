@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from a2a.llm import LLMClient, LLMRecord, Message
+from a2a.llm import LLMClient, LLMRecord
 
 
 @pytest.fixture

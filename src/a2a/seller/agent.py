@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 import json
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import structlog
 
-from a2a.catalog.models import CatalogEntry
 from a2a.llm import LLMClient, LLMRecord, Message, get_client
-from a2a.seller.models import FunnelVariant, SellerConfig, SellerDecision
+from a2a.seller.models import SellerConfig, SellerDecision
+
+if TYPE_CHECKING:
+    from a2a.catalog.models import CatalogEntry
 
 log = structlog.get_logger(__name__)
 

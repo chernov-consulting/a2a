@@ -6,9 +6,9 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from a2a.llm import LLMClient, LLMRecord, Message, get_client
 from a2a.config import AppConfig
 from a2a.exceptions import LLMError
+from a2a.llm import LLMClient, LLMRecord, Message
 
 
 def _make_mock_response(content: str = "hello") -> MagicMock:
