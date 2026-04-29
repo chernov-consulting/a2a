@@ -1,0 +1,32 @@
+# Experiment: B2B SaaS subscription — ObserveOps Pro
+# Run with: uv run a2a sim --experiment experiments/2026-05-saas-subscription/config.yaml
+
+slug: 2026-05-saas-subscription
+product_type: saas_subscription
+description: >
+  B2B SaaS observability platform (ObserveOps Pro).
+  Tests all three buyer archetypes against all three seller funnel variants.
+  Research questions: buyer context richness, seller onboarding for agents, rationale quality.
+
+seed: 2026
+dyads_per_cell: 30
+max_negotiation_turns: 3
+
+buyer_model: openai/gpt-4o
+seller_model: anthropic/claude-3-5-sonnet-20241022
+judge_model: openai/gpt-4o-mini
+
+buyer_archetypes:
+  - price_optimiser
+  - feature_matcher
+  - risk_averse
+
+funnel_variants:
+  - api_contract
+  - rich_schema
+  - persuasion_page
+
+mandate_contexts:
+  - terse_json
+
+autonomy: full_auto

@@ -1,0 +1,32 @@
+# Experiment: Physical good — wine subscription (Terroir Direct)
+# Run with: uv run a2a sim --experiment experiments/2026-05-physical-good/config.yaml
+
+slug: 2026-05-physical-good
+product_type: physical_good
+description: >
+  Physical goods subscription (Terroir Direct — single-bottle wine subscription).
+  Contrasts with the SaaS experiment: tangible goods, shipping, returns, trust signals differ.
+  Same 3x3 cell matrix as the SaaS experiment for apples-to-apples comparison.
+
+seed: 2026
+dyads_per_cell: 30
+max_negotiation_turns: 3
+
+buyer_model: openai/gpt-4o
+seller_model: anthropic/claude-3-5-sonnet-20241022
+judge_model: openai/gpt-4o-mini
+
+buyer_archetypes:
+  - price_optimiser
+  - feature_matcher
+  - risk_averse
+
+funnel_variants:
+  - api_contract
+  - rich_schema
+  - persuasion_page
+
+mandate_contexts:
+  - terse_json
+
+autonomy: full_auto

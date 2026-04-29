@@ -1,0 +1,25 @@
+a2a — When Both Sides Are Agents
+Copyright 2026 Chernov Consulting OÜ (https://chernov.io)
+
+---------------------------------------------------------------------------
+Preferred citation (APA)
+---------------------------------------------------------------------------
+
+Chernov, A. (2026). When Both Sides Are Agents: A Versioned Open Benchmark
+for Agentic E-Commerce. Chernov Consulting OÜ.
+GitHub: https://github.com/chernov-consulting/a2a
+Showcase: https://a2a.chernov.io
+
+BibTeX:
+  @misc{chernov2026a2a,
+    author  = {Chernov, Anton},
+    title   = {When Both Sides Are Agents: A Versioned Open Benchmark for Agentic E-Commerce},
+    year    = {2026},
+    url     = {https://github.com/chernov-consulting/a2a},
+    note    = {Chernov Consulting O\"{U}}
+  }
+
+---------------------------------------------------------------------------
+Code (Apache-2.0): src/, scripts/, tests/
+Content (CC-BY-4.0): articles/, experiments/, site/, README.md, NOTICE
+---------------------------------------------------------------------------

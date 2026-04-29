@@ -1,0 +1,41 @@
+# Cursor IDE — never publish editor metadata
+.cursor/
+
+# Python environment
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.egg-info/
+dist/
+build/
+
+# Secrets and local config — never commit
+.env
+env.yaml
+*.key
+*.pem
+*.p12
+secrets/
+
+# Experiment output (committed selectively via experiments/ folder)
+output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (site build tooling)
+node_modules/
+site/dist/
+site/.astro/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
