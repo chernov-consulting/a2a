@@ -1,0 +1,63 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+const {
+  title = 'a2a — When Both Sides Are Agents',
+  description = 'An open benchmark for agentic e-commerce. We simulate full commercial transactions where both the buyer and the seller are AI agents.',
+  ogImage = '/og.png',
+} = Astro.props;
+const canonical = Astro.url.href;
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- OG / Twitter -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={`https://a2a.chernov.io${ogImage}`} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`https://a2a.chernov.io${ogImage}`} />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "a2a — When Both Sides Are Agents",
+    "url": "https://a2a.chernov.io",
+    "author": { "@type": "Person", "name": "Anton Chernov", "url": "https://chernov.io" }
+  })} />
+</head>
+<body class="bg-neutral-950 text-neutral-100 font-sans antialiased">
+  <slot />
+  <footer class="border-t border-neutral-800 py-8 mt-20">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+      <div>
+        <a href="https://github.com/chernov-consulting/a2a" class="hover:text-neutral-300 transition">github</a>
+        <span class="mx-2">·</span>
+        <a href="https://chernov.io/writing/when-both-sides-are-agents/" class="hover:text-neutral-300 transition">article</a>
+        <span class="mx-2">·</span>
+        <a href="https://chernov.io" class="hover:text-neutral-300 transition">chernov.io</a>
+      </div>
+      <div>Apache-2.0 · CC-BY-4.0 · <a href="https://github.com/chernov-consulting/a2a/blob/main/NOTICE" class="hover:text-neutral-300 transition">cite this work</a></div>
+    </div>
+  </footer>
+</body>
+</html>
